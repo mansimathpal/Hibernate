@@ -1,0 +1,185 @@
+                        Drawbacks of hibernate
+
+1.JDBC code is dependent upon the database software being using.
+2. Its very expensive to change the database in the middle of the development.
+3. JDBC code is not portable over multiple database softwares.
+4. We need to repeating the same lines of  code over and over again in your
+application for fetching data from the database.
+5. There is no support for object level mapping.
+6. To migrate from one database to another, we need to re-write all the queries again.
+
+                        Advantages of hibernate
+
+1.Open source and light weight.
+2. Hibernate provides object/relational mappings. Here is different o/r mapping strategies 
+as multiple-objects to single-row mapping. Polymorphic
+associations, bi-directional association, association filtering. It also 
+provides XML mapping documents.
+3. Hibernate supports inheritance, associations, collections[list,set,map,array].
+4. In hibernate if we save the derived class object then its base class
+object will also be stored into the database, it means hibernate supporting inheritance.
+5. Hibernate supports relationships like one-to-many, one-to-one, many-to-many,many-to-one.
+6. This will also supports collections like list, set, map(only new collections).
+7. In JDBC all exceptions are checked exceptions, so we must write code in try,catch and
+throws, but in hibernate we only have un-checked expections, so we need to write try,
+catch , or no need to write throws. Actually in hibernate
+we have the translator which converts checked to un-checked.
+8. Hibernate has its own query language i.e.hibernate query language which
+is database independent.
+9. So if we change the database, then also our application will works as
+HQL is database independent.
+10. HQL contains database independent commands.
+11. While we are inserting any record, if we don't have any particular table
+in the database, JDBC will raise an error like "view not exist", and throws
+exception, but in case of hibernate, if it is not found in any table in the
+database this will create the table for us.
+12. Hibernate supports caching mechansism by this, the number of round trips between
+an application and the database will be reduced, by using this caching technique an 
+pplication performance will be increased automatically.
+13. Hibernate supports annotations(), apart from XML.
+14. It provides session level caching which is default cache and optional second-level
+cache(at session factory level).
+15. It introduces lazy initialization.
+16. Hibernate provide outer join fetching.
+
+                                   Hibernate.hbm2ddl.auto:
+
+1. Create- It will create a new table always. If the table exists, it will drop the 
+table and create a new table[testing].
+2. Update- If the table exists, then it will update the schema and if the table does not
+exist it will create a new table.
+
+                                 Steps to create hibernate application
+
+1. Create the java project and import the hibernate jar files.
+2. Create student POJO class.
+3. Create hibernate.cfg.xml in src folder and write database and hibernate properties.
+4. Create a mapping file for the student.java class.
+5. Register the mapping file(student.hbm.xml) with the hibernate.cfg.xml file.
+6. Create the session factory and session object to save student object.
+
+                                hibernate.show_sql(optional property)
+
+The SQL created internally will be visible on the console.
+
+                               <mapping resource="student.hbm.xml"/>
+
+For registered the mapping file in config.xml file.
+
+                               Steps to create 
+
+1. Create the configuration class.
+2. Create a session factory.
+3. Create the session object.
+
+                                CRUD opeartions using hibernate
+
+1. Save/create(object obj)
+2. Update- Session interface provides update(object obj) method to update the object
+in database.
+3. Delete- We have delete(object obj)to delete the data from the database.
+4. get(BeanClass,id)- Object fetch the single row from the database and store
+that into object.
+5. If you want to fetch all the rows[records] from the database.
+ Query interface
+ read
+     1. Read single row
+     2. Real all data(all rows)
+There is a method in the session interface called get(EntityName, id).
+Then it will fetch the object of the student based on the id.
+
+                           DAO(data access object)
+
+Here we will use DAO(data access object) its a very good pattern to design database 
+application.Persistent business logic or it provides the abstract layer to 
+the developer.
+
+                                 Steps to use DAO pattern
+
+1. Create an interface and declare the methods inside this.
+            --save
+            --update
+            --delete
+            --getStudentById
+            --findAll
+
+JAVA Configuration for the mapping of the objeccts in the database(Annotations)
+
+                                     @Entity
+
+It will map the JAVA class with database table.
+
+                                      @Table
+
+You can create custom table name in the database.
+
+                                   @Id
+
+It will make this property as a primary key in the database table.
+
+                                   @Generated Value
+
+It will generate a unique value for this and increment automatically
+
+                                    Collection
+
+Group of objects which are used to store data.
+
+                             Implentations of collection interface
+
+1. List- It is an interface and it can store duplicate values.
+It has 2 implementations:
+--ArrayList- Memory is static. It gives best performance for traversing/searching the
+elements.Insertion and deletion is very expensive here.
+
+--LinkedList- It is better for manipulating data. Memory can increase according to need.
+Traversing is very expensive in terms of time.
+
+2. Set- It will not allow duplicate values.
+--HashSet- It  does not maintain the insertion order of the objects.
+
+--LinkedHashSet- It will maintain the insertion order of the objects.
+
+--TreeSet- It is used to sort the elements in natural ascending order(ASCII Values).
+
+3. Queue
+4. Mappings
+1. One-to-one
+2. One-to-many
+3. Many-to-one
+4. Many-to-many
+
+Map(k,v)-  It contains <k,v> pair.It contains unique keys and values can be duplicate.
+It is useful for search,update,delete.
+<k,v>-->Entry
+--TreeMap-> It sort the objects based on the keys.
+--HashMap
+--LinkedHashMap
+
+                             Data Structures
+
+1. Array
+2. LinkedList
+3. Queue
+4. Stack
+5. Tree
+6. Graph
+
+                               Physical data structures
+
+-- Array
+--LinkedList
+
+                                Many-to-one
+
+The owner of the foreign key will be the first table.
+
+                                Iterator interface
+
+It is inside "java.util" package and is used to traverse the object. It moves in the 
+forward direction only. To create a reference of the iterator we use iterate()
+method of the collection interface.
+Iterator it = students.iterator();
+public boolean hasNext()
+public oject next()
+public void remove()

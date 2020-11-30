@@ -1,0 +1,40 @@
+                                      J2EE
+
+Java EE industry approved standard API based framework.
+It is predominantly based on annotations and XML configuration.
+JFC MVC framework for web development.
+JPA specification to process database operation.
+JTA API with implementation.
+EJB container and POJO based implementation.
+oracle license
+
+                                   Spring
+
+Based on IOC and AOP.
+Based on XML configuration(now they are leveraging annotation).
+Uses spring DAO framework(based on template design pattern) to connect to database.
+Provides abstraction layer to support various JTA implementation vendor.
+Integrates with various Java vendors to support different capabilities such as struts etc.
+Provides end-to-end platform to build web application achieving loose coupling using
+DI and AOP.
+Open source license.
+
+Spring configuration file-->beans.xml
+
+                                   Dependency injection
+
+1. Setter injection
+2. Constructor injection
+
+                                    Creating Advice
+
+Before advice- It is executed before  the joinpoint.
+
+After returning advice- It is executed after the joinpoint completes successfully.
+
+After throwing advice- It executes if method exists by throwing an exception.
+
+After advice-It executes after a joinpoint executes regardless of jointpoint exists or
+completes successfully.
+
+Around advice-It excutes before and after the joinpoint.

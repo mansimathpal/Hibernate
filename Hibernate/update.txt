@@ -1,0 +1,9 @@
+                       for update in hibernate
+
+Student std = session.get(Student.class, 101);
+        System.out.println(std);
+        Student studentUpdate = session.get(Student.class,101);
+        
+        studentUpdate.setEmail("abc.123@xyz.com");
+		studentUpdate.setAddress("Gurgaon");
+		session.update(studentUpdate);
